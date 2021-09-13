@@ -20,5 +20,5 @@ steps:
 - task: Bash@3
   inputs:
     filePath: 'ingress/configure-ingress-controller.sh'
-    arguments: 'oovmyserve-ingress oovaksacr.azurecr.io oovmyserve internal-ingress-values.yaml ingress-controller-manifest.yaml'
+    arguments: '<ingressname> <yourregistryname>.azurecr.io <yournamespace> internal-ingress-values.yaml ingress-controller-manifest.yaml'
     workingDirectory: "ingress/"
