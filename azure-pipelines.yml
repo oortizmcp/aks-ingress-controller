@@ -1,7 +1,7 @@
 trigger:
 - main
 
-pool: 'ADO-LINUX-CUS-DEV'
+pool: 'ADO-LINUX-AGENT-POOL'
 
 
 steps:
@@ -9,7 +9,7 @@ steps:
   displayName: 'kubectl login'
   inputs:
     connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'OOV-AKS-Cluster-SC'
+    kubernetesServiceEndpoint: 'AKS-Cluster-SC'
     namespace: 'ingress-basic'
     command: login
 - task: Bash@3
