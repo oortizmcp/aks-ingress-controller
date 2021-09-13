@@ -40,4 +40,5 @@ helm upgrade --install $ingress_name ingress-nginx/ingress-nginx --version 3.36.
 --set defaultBackend.image.image=$DEFAULTBACKEND_IMAGE \
 --set defaultBackend.image.tag=$DEFAULTBACKEND_TAG -f $ingress_values_file
 
+# Deploy manifest to AKS
 kubectl apply -f $ingress_manifest_file    
