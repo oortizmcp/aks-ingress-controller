@@ -1,0 +1,24 @@
+trigger:
+- main
+
+pool: 'ADO-LINUX-CUS-DEV'
+
+
+steps:
+- task: Kubernetes@1
+  displayName: 'kubectl login'
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'OOV-AKS-Cluster-SC'
+    namespace: 'ingress-basic'
+    command: login
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'sed -i ''s/\r$//'' ''./configure-ingress-controller.sh'''
+    workingDirectory: "ingress/"
+- task: Bash@3
+  inputs:
+    filePath: 'ingress/configure-ingress-controller.sh'
+    arguments: 'oovmyserve-ingress oovaksacr.azurecr.io oovmyserve internal-ingress-values.yaml ingress-controller-manifest.yaml'
+    workingDirectory: "ingress/"
