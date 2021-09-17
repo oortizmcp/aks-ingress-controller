@@ -20,5 +20,5 @@ steps:
 - task: Bash@3
   inputs:
     filePath: 'ingress/configure-ingress-controller.sh'
-    arguments: '<ingressname> <yourregistryname>.azurecr.io <yournamespace> internal-ingress-values.yaml ingress-controller-manifest.yaml'
+    arguments: 'nginx-ingress <yourregistryname>.azurecr.io ingress-basic internal-ingress.yaml aks-helloworld.yaml ingress-demo.yaml hello-world-ingress.yaml'
     workingDirectory: "ingress/"

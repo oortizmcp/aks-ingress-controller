@@ -1,0 +1,12 @@
+rbac:
+  create: true
+  createRole: false
+  createClusterRole: false
+controller:
+  service:
+    type: LoadBalancer
+    loadBalancerIP: <unused ip from vnet subnet where the aks is deployed>
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+  ports:
+  - port: 80
