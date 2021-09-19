@@ -22,11 +22,11 @@ Not for production (testing phase)
 6. Create internal-ingress.yaml file to create ingress controller and specify an ip that is not been used inside your vnet (use the internal-ingress.yaml inside ingress folder on this repo for reference)
 7. Run helm upgrade (Refer to manual.sh for commands)
 8. Run demo applications (aks-helloworld.yaml and ingress-demo.yaml) by running kubectl apply from linux vm
-9. Run kubectl get validatingwebhookconfigurations and Delete it (kubectl delete validatingwebhookconfigurations <nameoftheWebhook>)
+9. Run kubectl get validatingwebhookconfigurations and Delete it (kubectl delete validatingwebhookconfigurations nameoftheWebhook)
 10. Create an ingress route (deploy hello-world-ingress.yaml) 
 11. Validate and test ingress controller by running the following: 
-    a. kubectl run -it --rm aks-ingress-test --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 -n yournamespace
-    b. apt-get update && apt-get install -y curl
-    c. curl -L http://youripgivenfortheinternalloadbalancer and curl -L -k http://yourip/hello-world-two
-    d. You can also open a browser in a vm with access to this vnet and you should see your ingress working
+    <br>a. kubectl run -it --rm aks-ingress-test --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 -n yournamespace <br>
+    b. apt-get update && apt-get install -y curl<br>
+    c. curl -L http://youripgivenfortheinternalloadbalancer and curl -L -k http://yourip/hello-world-two <br>
+    d. You can also open a browser in a vm with access to this vnet and you should see your ingress working <br>
 
