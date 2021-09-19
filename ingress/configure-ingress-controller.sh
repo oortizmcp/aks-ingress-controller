@@ -46,7 +46,7 @@ helm upgrade --install $INGRESS_NAME ingress-nginx --version 3.36.0 --namespace 
 --set controller.image.digest="" \
 --set controller.admissionWebhooks.patch.nodeSelector."kubernetes\.io/os"=linux \
 --set controller.admissionWebhooks.patch.image.registry=$ACR_URL \
---set controller.admissionWebhooks.patch.image.digest=""
+--set controller.admissionWebhooks.patch.image.digest="" \
 --set controller.admissionWebhooks.patch.image.image=$PATCH_IMAGE \
 --set controller.admissionWebhooks.patch.image.tag=$PATCH_TAG \
 --set defaultBackend.nodeSelector."kubernetes\.io/os"=linux \
