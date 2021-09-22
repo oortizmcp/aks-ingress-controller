@@ -10,7 +10,6 @@ INGRESS_MANIFEST=$7
 
 
 #REGISTRY_NAME=<yourregistryname>
-#ACR_URL=$registry_name + '.azurecr.io'
 CONTROLLER_REGISTRY=k8s.gcr.io
 CONTROLLER_IMAGE=ingress-nginx
 CONTROLLER_TAG=v0.48.1
@@ -20,7 +19,7 @@ PATCH_TAG=v1.5.1
 DEFAULTBACKEND_REGISTRY=k8s.gcr.io
 DEFAULTBACKEND_IMAGE=defaultbackend-amd64
 DEFAULTBACKEND_TAG=1.5
-#ACR_URL=<yourregistryname>.azurecr.io
+
 
 # create namespace if doesn't exists
 kubectl create namespace $NAMESPACE --dry-run=client -o yaml | kubectl apply -f -

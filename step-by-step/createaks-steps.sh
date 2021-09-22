@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #Variables
-RESOURCE_GROUP=oo-demoresources-rg
-REGISTRY_NAME=ooaksacrprivdemo
-AKS_CLUSTER=aksdemo-private
-AKS_SUBNET=aks-snet
+RESOURCE_GROUP=<yourresourcegroup>
+REGISTRY_NAME=<yourregistryname>
+AKS_CLUSTER=<youraksclustername>
+AKS_SUBNET=<yourakssubnetname>
 
 AKS_SUBNET_ID=$(az network vnet subnet show -g $RESOURCE_GROUP -n $AKS_SUBNET --vnet-name $VNET_NAME --query "id" -o tsv)
 

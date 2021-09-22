@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # Variables
-RESOURCE_GROUP=oo-demoresources-rg
-VNET_NAME=aks-vnt-cus
-REGISTRY_NAME=ooaksacrprivdemo
+RESOURCE_GROUP=<yourresourcegroup>
+VNET_NAME=<yourvnetname>
+REGISTRY_NAME=<yourregistryname>
 REGISTRY_LOCATION=centralus
-MGMT_SNET=mgmt-snet
-AKS_SUBNET=aks-snet
+MGMT_SNET=<yourvmsubnetname>
+AKS_SUBNET=<yourakssubnetname>
 
 az acr create \
 -g $RESOURCE_GROUP \
--n ooaksacrprivdemo \
+-n $REGISTRY_NAME \
 --location $REGISTRY_LOCATION \
 --sku Premium \
 --public-network-enabled false
@@ -36,13 +36,13 @@ az network private-dns link vnet create \
   --virtual-network $VNET_NAME \
   --registration-enabled false
 
-REGISTRY_ID=$(az acr show --name REGISTRY_NAME --query "id" --output tsv)
+REGISTRY_ID=$(az acr show --name $REGISTRY_NAME --query "id" --output tsv)
 
 az network private-endpoint create \
 -n ooaksacr-privend-mgmt \
 -g $RESOURCE_GROUP \
 --vnet-name $VNET_NAME \
---subnet $MGMT_SUBNET \
+--subnet $MGMT_SNET \
 --private-connection-resource-id "$REGISTRY_ID" \
 --group-id registry \
 --connection-name ooaksacrprivlinkconn-mgmtsnet

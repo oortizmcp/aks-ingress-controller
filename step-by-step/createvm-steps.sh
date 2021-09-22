@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Variables
-RESOURCE_GROUP=oo-demoresources-rg
+RESOURCE_GROUP=<yourresourcegroup>
 LOCATION=centralus
-VNET_NAME=aks-vnt-cus
-VM_NAME=dockervm-jb
-VM_SUBNET=mgmt-snet
-AKS_SUBNET=aks-snet
+VNET_NAME=<yourvnetname>
+VM_NAME=<yourvmname>
+VM_SUBNET=<yourvmsubnetname>
+AKS_SUBNET=<yourakssubnetname>
 
 
 az group create --name $RESOURCE_GROUP --location $LOCATION
@@ -15,13 +15,13 @@ az network vnet create \
 -g $RESOURCE_GROUP \
 -n $VNET_NAME \
 --address-prefix 10.100.0.0/16 \
---subnet-name $MGMT_SNET \
---subnet-prefixes 10.100.1.0/24 
+--subnet-name $VM_SUBNET \
+--subnet-prefix 10.100.1.0/24 
 
 az network vnet subnet create \
 -g $RESOURCE_GROUP \
 --vnet-name $VNET_NAME \
--n aks-snet \
+-n $AKS_SUBNET \
 --address-prefixes 10.100.2.0/24 
 
 
@@ -62,6 +62,12 @@ az login
 az account set -s <your subscription> 
 
 # Enable Service Endpoint on VM
+az network vnet subnet update \
+ --name $MGMT_SNET \
+ --vnet-name $VNET_NAME \
+ --resource-group $RESOURCE_GROUP \
+ --disable-private-endpoint-network-policies
+ 
 az network vnet subnet update \
 --name $VM_SUBNET \
 --vnet-name $VNET_NAME \
