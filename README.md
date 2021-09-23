@@ -13,6 +13,10 @@ Not for production (testing phase)
 2. Create Private Azure Container Registry (refer to createregistry-steps.sh)
 3. Create Private AKS (refer to createaks-steps.sh)
 
+# Demo
+Create Ingress Controller in Private AKS (Manual Steps): https://youtu.be/CBUbtf3hQWo <br>
+Create Ingress Controller in Private AKS with Azure Pipelines : https://youtu.be/FzNMVK-Aq2M <br>
+
 # Installing Ingress Controller (Step-by-Step)
 1. From Linux VM, authenticate with your registry and run az acr import to import all necessary images/repositories into the container registry (make sure you have Azure CLI, Docker, Helm (v 3.7.0), Kubernetes CLI installed )
 2. Download desired package for ingress-nginx (Im using version 3.36.0)
